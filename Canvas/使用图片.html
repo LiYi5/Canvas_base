@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style type="text/css">
+  body{
+    background: pink;
+  }
+  #test{
+    background: gray;
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+  }
+</style>
+<body>
+  <canvas id="test" width="300" height="300" >
+
+  </canvas>
+  <script type="text/javascript">
+
+
+      window.onload=function () {
+        var canvas=document.querySelector('#test')
+        if(canvas.getContext){
+          var ctx=canvas.getContext('2d')
+
+          var img=new Image();
+          img.src='tg.png'
+          img.onload=draw;
+          function draw() {
+            ctx.drawImage(img,0,0,img.width,img.height)
+          }
+
+        }
+      }
+  </script>
+</body>
+</html>

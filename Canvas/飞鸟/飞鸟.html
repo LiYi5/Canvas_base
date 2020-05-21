@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style type="text/css">
+  body{
+    background: pink;
+  }
+  #test{
+    background: white;
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+  }
+</style>
+<body>
+  <canvas id="test" width="300" height="300" >
+
+  </canvas>
+  <script type="text/javascript">
+
+
+      window.onload=function () {
+        var canvas=document.querySelector('#test')
+        canvas.width=document.documentElement.clientWidth;
+        canvas.height=document.documentElement.clientHeight;
+        if(canvas.getContext){
+          var i=1;
+          var ctx=canvas.getContext('2d')
+          var value=0;
+            setInterval(function () {
+              ctx.clearRect(0,0,canvas.width,canvas.height)
+              i++;
+              value+=10;
+              if(i==9){
+                i=1;
+              }
+              var img=new Image();
+              img.src='q_r'+i+'.jpg';
+
+              img.onload=function () {
+                draw(this)
+              };
+
+            },100)
+          function draw(img) {
+            ctx.drawImage(img,value,0)
+
+          }
+        }
+      }
+  </script>
+</body>
+</html>
